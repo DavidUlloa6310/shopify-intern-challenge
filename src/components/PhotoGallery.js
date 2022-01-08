@@ -4,6 +4,8 @@ import axios from "axios";
 
 import styles from "../styles/components/PhotoGallery.module.css";
 
+import PhotoContainer from "./PhotoContainer";
+
 function PhotoGallery(props) {
   let [response, setResponse] = useState(null);
   let [loading, setLoading] = useState(true);
@@ -12,7 +14,7 @@ function PhotoGallery(props) {
     async function fetchData() {
       try {
         let response = await axios.get(
-          `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_TOKEN}&date=2022-01-04`
+          `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_TOKEN}&start_date=2021-12-01&end_date=2021-12-27`
         );
 
         setResponse(await response.data);
@@ -31,7 +33,9 @@ function PhotoGallery(props) {
 
   return (
     <div className={styles["grid"]}>
-      <img src={response.url} alt={response.title} />
+      {response.map((photoData) => {
+        return <PhotoContainer data={photoData} key={photoData.title} />;
+      })}
     </div>
   );
 }

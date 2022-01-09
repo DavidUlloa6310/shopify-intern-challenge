@@ -1,6 +1,8 @@
-.grid {
+.photo-gallery-grid {
   display: grid;
   grid-gap: 20px;
+  max-width: 1920px;
+  width: 100vw;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-items: center;
 }

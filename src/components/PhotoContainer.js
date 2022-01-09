@@ -29,12 +29,12 @@ function PhotoContainer(props) {
   let data = props.data;
   return (
     <article className={`${styles["photo-container"]}`}>
-      <div className={styles["photo-container__image-div"]}>
-        <img src={data.url} alt={data.title} />
-      </div>
+      <img src={data.url} alt={data.title} />
 
-      <h2>{data.title}</h2>
-      <h3>{createDate(data.date)}</h3>
+      <div className={styles["photo-container__info-text"]}>
+        <h2>{data.title}</h2>
+        <h3>{createDate(data.date)}</h3>
+      </div>
     </article>
   );
 }

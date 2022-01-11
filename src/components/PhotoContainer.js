@@ -29,7 +29,11 @@ function PhotoContainer(props) {
   let data = props.data;
   return (
     <article className={`${styles["photo-container"]}`}>
-      <img src={data.url} alt={data.title} />
+      {data.url.includes("youtube") ? (
+        <iframe title={data.url} src={data.url}></iframe>
+      ) : (
+        <img src={data.url} alt={data.title} />
+      )}
 
       <div className={styles["photo-container__info-text"]}>
         <h2>{data.title}</h2>

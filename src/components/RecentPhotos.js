@@ -42,11 +42,14 @@ function RecentPhotos(props) {
   }
 
   return (
-    <div className={styles["recent-photos-grid"]}>
-      {response.map((photoData) => {
-        return <PhotoContainer data={photoData} key={photoData.title} />;
-      })}
-    </div>
+    <>
+      <h2>Recent Photos</h2>
+      <div className={styles["recent-photos-grid"]}>
+        {response.map((photoData) => {
+          return <PhotoContainer data={photoData} key={photoData.title} />;
+        })}
+      </div>
+    </>
   );
 }
 

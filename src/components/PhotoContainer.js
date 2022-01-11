@@ -36,7 +36,7 @@ function PhotoContainer(props) {
       )}
 
       <div className={styles["photo-container__info-text"]}>
-        <h2>{data.title}</h2>
+        <h3>{data.title}</h3>
         <h3>{createDate(data.date)}</h3>
       </div>
     </article>

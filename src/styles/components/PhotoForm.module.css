@@ -1,0 +1,23 @@
+.photo-form__form div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-form__form div input {
+  height: 25px;
+}
+
+.photo-form__form div > * {
+  margin: 10px;
+}
+
+.photo-form__button {
+  margin: 10px;
+  width: 200px;
+  height: 50px;
+  border: none;
+  color: black;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+}

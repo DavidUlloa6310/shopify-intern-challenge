@@ -26,14 +26,40 @@
   border: none;
 }
 
-.photo-container__info-text {
+.photo-container__bar {
   position: absolute;
   color: white;
   text-align: left;
+  width: 100%;
   margin: 10px;
   bottom: 0;
   left: 0;
   z-index: 10;
 
   font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.photo-container__icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  padding: 10px;
+}
+
+.photo-container__bar > div {
+  width: 50%;
+}
+
+.photo-container__icon {
+  color: white;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.photo-container__clicked {
+  color: red;
 }

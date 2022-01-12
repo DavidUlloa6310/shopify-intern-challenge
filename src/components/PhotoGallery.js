@@ -11,8 +11,8 @@ function PhotoGallery(props) {
   let [response, setResponse] = useState([]);
   let [loading, setLoading] = useState(false);
 
-  let [startDate, setStartDate] = useState(null);
-  let [endDate, setEndDate] = useState(null);
+  let [startDate, setStartDate] = useState("");
+  let [endDate, setEndDate] = useState("");
 
   let [error, setError] = useState(false);
 
@@ -66,7 +66,7 @@ function PhotoGallery(props) {
         endDate={endDate}
       ></PhotoForm>
       {error ? <h3>{error}</h3> : null}
-      {startDate === null || endDate === null || response === [] ? (
+      {startDate === "" || endDate === "" || response === [] ? (
         <h3>Please insert a start and end date</h3>
       ) : (
         <div className={styles["photo-gallery-grid"]}>

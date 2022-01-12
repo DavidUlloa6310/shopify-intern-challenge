@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+
+import PhotoText from "./PhotoText";
 
 import styles from "../styles/components/PhotoContainer.module.css";
 
+import { FaHeart, FaEnvelopeOpenText } from "react-icons/fa";
+
 function PhotoContainer(props) {
+  let data = props.data;
+
+  const [isLiked, setIsLiked] = useState(
+    localStorage.getItem(data.title) === "true"
+  );
+
+  const [showText, setShowText] = useState(false);
+
   function createDate(date) {
     let dateArray = date.split("-");
 
@@ -26,20 +38,54 @@ function PhotoContainer(props) {
     return `${month} ${dateArray[2]}, ${dateArray[0]}`;
   }
 
-  let data = props.data;
-  return (
-    <article className={`${styles["photo-container"]}`}>
-      {data.url.includes("youtube") ? (
-        <iframe title={data.url} src={data.url}></iframe>
-      ) : (
-        <img src={data.url} alt={data.title} />
-      )}
+  function likeHandler() {
+    if (isLiked) {
+      localStorage.setItem(data.title, "false");
+      setIsLiked(false);
+    } else {
+      localStorage.setItem(data.title, "true");
+      setIsLiked(true);
+    }
+  }
 
-      <div className={styles["photo-container__info-text"]}>
-        <h3>{data.title}</h3>
-        <h3>{createDate(data.date)}</h3>
-      </div>
-    </article>
+  function textHandler() {
+    setShowText((prevState) => !prevState);
+  }
+
+  return (
+    <>
+      {showText ? (
+        <PhotoText text={data.explanation} onClick={textHandler} />
+      ) : null}
+      <article className={`${styles["photo-container"]}`}>
+        {data.url.includes("youtube") ? (
+          <iframe title={data.url} src={data.url}></iframe>
+        ) : (
+          <img src={data.url} alt={data.title} />
+        )}
+
+        <div className={styles["photo-container__bar"]}>
+          <div>
+            <h3>{data.title}</h3>
+            <h3>{createDate(data.date)}</h3>
+          </div>
+          <div className={`${styles["photo-container__icons"]}`}>
+            <FaHeart
+              size={30}
+              className={`${styles["photo-container__icon"]} ${
+                isLiked ? styles["photo-container__clicked"] : ""
+              }`}
+              onClick={likeHandler}
+            ></FaHeart>
+            <FaEnvelopeOpenText
+              size={30}
+              className={styles["photo-container__icon"]}
+              onClick={textHandler}
+            ></FaEnvelopeOpenText>
+          </div>
+        </div>
+      </article>
+    </>
   );
 }
 

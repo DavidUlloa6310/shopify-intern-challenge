@@ -48,14 +48,18 @@ function PhotoContainer(props) {
     }
   }
 
-  function textHandler() {
-    setShowText((prevState) => !prevState);
+  function setShowTextTrue() {
+    setShowText(true);
+  }
+
+  function setShowTextFalse() {
+    setShowText(false);
   }
 
   return (
     <>
       {showText ? (
-        <PhotoText text={data.explanation} onClick={textHandler} />
+        <PhotoText text={data.explanation} onClick={setShowTextFalse} />
       ) : null}
       <article className={`${styles["photo-container"]}`}>
         {data.url.includes("youtube") ? (
@@ -80,7 +84,7 @@ function PhotoContainer(props) {
             <FaEnvelopeOpenText
               size={30}
               className={styles["photo-container__icon"]}
-              onClick={textHandler}
+              onClick={setShowTextTrue}
             ></FaEnvelopeOpenText>
           </div>
         </div>

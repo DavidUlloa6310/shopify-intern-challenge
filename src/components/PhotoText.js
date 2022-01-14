@@ -12,7 +12,7 @@ function PhotoText(props) {
     </div>
   );
 
-  return ReactDOM.render(modal, document.getElementById("modal-hook"));
+  return ReactDOM.createPortal(modal, document.getElementById("modal-hook"));
 }
 
 export default PhotoText;
